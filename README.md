@@ -6,6 +6,8 @@
 **College:** Global Academy of Technology  
 **Email ID:** rohithrohith838@gmail.com
 
+-------------------------------------------------
+
 <details>
 <summary><b>Task 1:</b> Task is to refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler</summary>
 
