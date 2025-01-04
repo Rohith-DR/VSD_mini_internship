@@ -135,6 +135,115 @@ $ spike -d pk sum.o
  <p align="center">
   <img width="800" height="500" src="/Task 2/Debugging.png">
 </p>
+</details>
 
 ----------------------------------------
+
+<details>
+<summary><b>Task 3:</b> Identifying RISC-V Instruction Types</summary>
+
+## WHAT IS RISC-V?
+- RISC-V is an open-source instruction set architecture (ISA) that allows developers to create processors tailored for specific applications.
+- RISC-V is based on reduced instruction set computer principles and is the fifth generation of processors built on this concept.
+- RISC-V can also be understood as an alternative processor technology that is free and open-source, meaning you don't need to purchase a license to use it.
+
+## INSTRUCTIONS FORMAT IN RISC-V
+The instruction format of a processor dictates how machine language instructions are structured and organized for the processor to execute. Each instruction is composed of a series of 0s and 1s, with each segment containing information about the location and operation of data.  
+There are six primary instruction formats in RISC-V:
+
+1. R-format
+2. I-format
+3. S-format
+4. B-format
+5. U-format
+6. J-format
+
+#### RISCV Instruction Types
+
+ <p align="center">
+  <img src="/Task 3/Instruction_Types.png">
+</p>
+
+### 1. R-type Instruction
+In RV32, each instruction is 32 bits in size. R-type instructions perform operations on registers (not memory) and are used for various arithmetic and logical operations. The 32-bit instruction is divided into six fields:
+
+#### R-type
+ <p align="center">
+  <img src="/Task 3/Instruction_R_Type.png">
+</p>
+
+- **opcode** (7 bits): Specifies the type of instruction.
+- **rd** (5 bits): The destination register where the result of the operation is stored.
+- **func3** (3 bits): Specifies the type of operation performed.
+- **rs1, rs2** (5 bits each): Source registers used in the operation.
+- **func7** (7 bits): Further specifies the operation.
+
+### 2. I-type Instruction
+I-type instructions involve operations that use both registers and an immediate value (not memory). These instructions are used for immediate and load operations. The instruction format is as follows:
+
+#### I-type
+ <p align="center">
+  <img src="/Task 3/Instruction_I_Type.png">
+</p>
+
+- **opcode** (7 bits): Specifies the type of instruction.
+- **rd** (5 bits): The destination register for the result.
+- **func3** (3 bits): Specifies the type of operation.
+- **rs1** (5 bits): Source register.
+- **imm[11:0]** (12 bits): A 12-bit signed immediate value used in the operation.
+
+### 3. S-type Instruction
+S-type instructions are used for store operations where data is stored from a register to memory. The 32-bit instruction is divided as follows:
+
+#### S-type
+ <p align="center">
+  <img src="/Task 3/Instruction_S_Type.png">
+</p>
+
+- **opcode** (7 bits): Specifies the type of instruction.
+- **imm[11:5]** (7 bits) and **imm[4:0]** (5 bits): The 12-bit immediate value is split across two fields, specifying the store offset.
+- **rs1** (5 bits): The register containing the data to store.
+- **rs2** (5 bits): The register containing the address where data should be stored.
+- **func3** (3 bits): Specifies the type of store (byte, half-word, or word).
+
+### 4. B-type Instruction
+B-type instructions are used for conditional branching based on comparisons. The 32-bit instruction format is as follows:
+
+#### B-type
+ <p align="center">
+  <img src="/Task 3/Instruction_B_Type.png">
+</p>
+
+- **opcode** (7 bits): Specifies the type of instruction.
+- **imm[12]** (1 bit), **imm[10:5]** (6 bits), **imm[4:1]** (4 bits), and **imm[11]** (1 bit): These bits form the 12-bit signed immediate used for the branch offset.
+- **rs1, rs2** (5 bits each): Source registers involved in the comparison.
+- **func3** (3 bits): Defines the condition used for branching.
+
+### 5. U-type Instruction
+U-type instructions are used to transfer an immediate value into the destination register. The format is simple and involves only two instructions: `LUI` and `AUIPC`.
+
+#### B-type
+ <p align="center">
+  <img src="/Task 3/Instruction_B_Type.png">
+</p>
+
+- **opcode** (7 bits): Specifies the type of instruction.
+- **rd** (5 bits): The destination register for the immediate value.
+- **imm[19:0]** (20 bits): The 20-bit immediate value that is transferred to the destination register.
+
+For example, the instruction `lui x15, 0x13579` would load the value `0x13579000` into the upper 20 bits of register `x15`.
+
+### 6. J-type Instruction
+J-type instructions are used for jump operations. These instructions are often used for loops and branching to a specified memory location. The format is as follows:
+
+#### J-type
+ <p align="center">
+  <img src="/Task 3/Instruction_J_Type.png">
+</p>
+
+- **opcode** (7 bits): Specifies the type of instruction.
+- **imm[20]** (1 bit), **imm[10:1]** (10 bits), **imm[11]** (1 bit), and **imm[19:12]** (8 bits): These bits form the 20-bit signed immediate for the jump address.
+- **rd** (5 bits): The destination register (used for return addresses).
+
+</details>
 
