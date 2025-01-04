@@ -481,15 +481,17 @@ int main() {
 
 ----------------------------------------------
 
-### 13) `li a0, 0`
-* This is a pseudo-instruction equivalent to `addi a0, x0, 0`.
-* Opcode for `addi` = `0010011`
-* rd = `a0` = `00000`
-* rs1 = `x0` = `00000`
-* imm = `0` = `000000000000`
-* func3 = `000`
+### 13) `AND r8, r1, r3`
+* All the arithmetic and logical operations are performed using R-type instruction format, hence this instruction belongs to R-type instruction set.  
+* r8 is the destination register that will hold the value of r1 & r3, means performing AND operation bit by bit.  
+* Opcode for AND = 0110011  
+* rd = r8 = 01000  
+* rs1 = r1 = 00001  
+* rs2 = r3 = 00011  
+* func3 = 111  
+* func7 = 0000000  
 
-**32 bits instruction:** `000000000000_00000_000_00000_0010011`
+**32 bits instruction :** `0000000_00011_00001_111_01000_0110011`
 
 ----------------------------------------------
 
