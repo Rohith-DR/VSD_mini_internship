@@ -1,0 +1,84 @@
+
+RISC-V Instruction Formats and their Explanations
+
+1. R-type (Register-Register):
+   - Used for: Arithmetic and logical operations between registers.
+   - Instruction Format:
+     |  31-25  | 24-20  | 19-15  | 14-12  | 11-7  | 6-0  |
+     | funct7  | rs2    | rs1    | funct3 | rd    | opcode |
+     
+   - Fields:
+     - funct7: 7 bits used for operation-specific encoding.
+     - rs2: 5 bits for the second source register.
+     - rs1: 5 bits for the first source register.
+     - funct3: 3 bits used for operation-specific encoding.
+     - rd: 5 bits for the destination register.
+     - opcode: 7 bits specifying the operation type.
+
+2. I-type (Immediate):
+   - Used for: Operations involving an immediate value and a register (e.g., loading values from memory).
+   - Instruction Format:
+     |  31-20   | 19-15  | 14-12  | 11-7  | 6-0  |
+     | imm[11:0]| rs1    | funct3 | rd    | opcode |
+     
+   - Fields:
+     - imm[11:0]: 12-bit immediate value.
+     - rs1: 5 bits for the source register.
+     - funct3: 3 bits for the operation encoding.
+     - rd: 5 bits for the destination register.
+     - opcode: 7 bits specifying the operation type.
+
+3. S-type (Store):
+   - Used for: Store operations, writing data from a register to memory.
+   - Instruction Format:
+     |  31-25  | 24-20  | 19-15  | 14-12  | 11-7  | 6-0  |
+     | imm[11:5]| rs2    | rs1    | funct3 | imm[4:0]| opcode |
+     
+   - Fields:
+     - imm[11:5]: Upper 7 bits of the immediate value (used as offset).
+     - rs2: 5 bits for the source register (data to store).
+     - rs1: 5 bits for the base address register.
+     - funct3: 3 bits for the operation encoding.
+     - imm[4:0]: Lower 5 bits of the immediate value (offset).
+     - opcode: 7 bits specifying the operation type.
+
+4. B-type (Branch):
+   - Used for: Conditional branch operations based on comparisons.
+   - Instruction Format:
+     |  31-31  |  30-25 | 24-21 | 20-19 | 18-12 | 11-8 | 7-0 |
+     | imm[12] | imm[10:5] | rs2  | rs1   | funct3 | imm[4:1] | imm[11:0] |
+     
+   - Fields:
+     - imm[12]: The most significant bit of the immediate value.
+     - imm[10:5]: The next 6 bits of the immediate value.
+     - rs2: 5 bits for the second source register.
+     - rs1: 5 bits for the first source register.
+     - funct3: 3 bits for the comparison operation encoding.
+     - imm[4:1]: Bits of the immediate value.
+     - imm[11:0]: The least significant bits of the immediate value.
+     - opcode: 7 bits specifying the operation type.
+
+5. U-type (Upper Immediate):
+   - Used for: Instructions requiring a 20-bit immediate value.
+   - Instruction Format:
+     |  31-12   | 11-7   | 6-0 |
+     | imm[19:0]| rd     | opcode |
+     
+   - Fields:
+     - imm[19:0]: 20-bit immediate value.
+     - rd: 5 bits for the destination register.
+     - opcode: 7 bits specifying the operation type.
+
+6. J-type (Jump):
+   - Used for: Unconditional jump operations (e.g., jump and link).
+   - Instruction Format:
+     |  31-31  |  30-21  | 20-19  | 18-12 | 11-8 | 7-0 |
+     | imm[20] | imm[10:1]| imm[11] | imm[19:12] | rd   | opcode |
+     
+   - Fields:
+     - imm[20]: The most significant bit of the immediate value.
+     - imm[10:1]: Next 10 bits of the immediate value.
+     - imm[11]: The 11th bit of the immediate value.
+     - imm[19:12]: 8 bits of the immediate value.
+     - rd: 5 bits for the destination register (used for return addresses).
+     - opcode: 7 bits specifying the operation type.
