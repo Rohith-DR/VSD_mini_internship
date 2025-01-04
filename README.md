@@ -123,11 +123,11 @@ spike pk sum.o
 #### Debugging the Assembly Language Program of  ```sum.c```  
 * Open the **Objdump** of code by using the following command  
 ```
-$ riscv64-unknown-elf-objdump -d sum.o | less  
+riscv64-unknown-elf-objdump -d sum.o | less  
 ```
 * Open the debugger in another terminal by using the following command  
 ```
-$ spike -d pk sum.o
+spike -d pk sum.o
 ```
 * The debugger will be opened in the terminal. Now, debugging operations can be performed as shown in the following snapshot.
 
