@@ -239,5 +239,283 @@ J-type instructions are used for jump operations. These instructions are often u
 - **imm[20]** (1 bit), **imm[10:1]** (10 bits), **imm[11]** (1 bit), and **imm[19:12]** (8 bits): These bits form the 20-bit signed immediate for the jump address.
 - **rd** (5 bits): The destination register (used for return addresses).
 
+<details>
+<summary>Given below is the C code of 16-Bit ReRAM Memory Model</summary>
+	
+```c
+//16-Bit ReRAM Memory Model
+
+#include <stdio.h>
+#include <stdint.h>
+
+// Define states for ReRAM
+#define HRS 0 // High Resistance State (binary 0)
+#define LRS 1 // Low Resistance State (binary 1)
+
+// Structure to represent a ReRAM cell
+typedef struct {
+    int state; // Current state of the cell (HRS or LRS)
+} ReRAM_Cell;
+
+// Structure to represent a 16-bit RAM
+typedef struct {
+    ReRAM_Cell cells[16]; // Array of 16 ReRAM cells
+} ReRAM_16Bit_RAM;
+
+// Function to initialize the 16-bit RAM
+void initialize_ram(ReRAM_16Bit_RAM *ram) {
+    for (int i = 0; i < 16; i++) {
+        ram->cells[i].state = HRS; // Set all cells to HRS (binary 0)
+    }
+}
+
+// Function to write a 16-bit value to the RAM
+void write_to_ram(ReRAM_16Bit_RAM *ram, uint16_t data) {
+    for (int i = 0; i < 16; i++) {
+        // Write each bit to the corresponding cell
+        if (data & (1 << i)) {
+            ram->cells[i].state = LRS; // Set to LRS (binary 1)
+        } else {
+            ram->cells[i].state = HRS; // Set to HRS (binary 0)
+        }
+    }
+}
+
+// Function to read a 16-bit value from the RAM
+uint16_t read_from_ram(ReRAM_16Bit_RAM *ram) {
+    uint16_t data = 0;
+    for (int i = 0; i < 16; i++) {
+        if (ram->cells[i].state == LRS) {
+            data |= (1 << i); // Set the corresponding bit in the output
+        }
+    }
+    return data;
+}
+
+// Main function to demonstrate the 16-bit RAM simulation
+int main() {
+    ReRAM_16Bit_RAM ram;
+
+    // Initialize the RAM
+    initialize_ram(&ram);
+    printf("Initialized RAM. All cells are in HRS (0).\n");
+
+    // Write a 16-bit value to the RAM
+    uint16_t value_to_write = 0b1010101010101010; // Example value: 16-bit alternating pattern
+    printf("Writing value: 0x%04X\n", value_to_write);
+    write_to_ram(&ram, value_to_write);
+
+    // Read the value from the RAM
+    uint16_t value_read = read_from_ram(&ram);
+    printf("Value read from RAM: 0x%04X\n", value_read);
+
+    // Write another 16-bit value to the RAM
+    value_to_write = 0xFFFF; // All bits set to 1
+    printf("Writing value: 0x%04X\n", value_to_write);
+    write_to_ram(&ram, value_to_write);
+
+    // Read again
+    value_read = read_from_ram(&ram);
+    printf("Value read from RAM: 0x%04X\n", value_read);
+
+    return 0;
+}
+```
+</details>
+
+### *Now, let's analyse each instruction one by one*  
+
+### 1) `addiw a5, a5, 1`
+* This is an I-type instruction used for adding an immediate value to a register.
+* `a5` is both the source register (rs1) and the destination register (rd).
+* The immediate value `1` is added to the value in register `a5` and the result is stored in `a5`.
+* Opcode for `addiw` = `0001011`
+* rd = `a5` = `00101`
+* rs1 = `a5` = `00101`
+* imm = `1` = `000000000001`
+* func3 = `000`
+
+**32 bits instruction:** `000000000001_00101_000_00101_0001011`
+
+----------------------------------------------
+
+### 2) `addi a4, a4, 4`
+* This is an I-type instruction used for adding an immediate value to a register.
+* `a4` is both the source register (rs1) and the destination register (rd).
+* The immediate value `4` is added to the value in register `a4` and the result is stored in `a4`.
+* Opcode for `addi` = `0010011`
+* rd = `a4` = `00100`
+* rs1 = `a4` = `00100`
+* imm = `4` = `000000000100`
+* func3 = `000`
+
+**32 bits instruction:** `000000000100_00100_000_00100_0010011`
+
+----------------------------------------------
+
+### 3) `beq a5, a2, 10200`
+* This is a B-type instruction used for conditional branching (branch if equal).
+* If the values in registers `a5` and `a2` are equal, the program counter will jump to the specified offset (`10200`).
+* Opcode for `beq` = `1100011`
+* rs1 = `a5` = `00101`
+* rs2 = `a2` = `00010`
+* imm = `10200` = `000000000000101000000`
+* func3 = `000`
+
+**32 bits instruction:** `000000000000101_00101_000_00010_1100011`
+
+----------------------------------------------
+
+### 4) `lw a3, 0(a4)`
+* This is an I-type instruction used for loading a word from memory.
+* The value at memory address `a4 + 0` (no offset) is loaded into register `a3`.
+* Opcode for `lw` = `0000011`
+* rd = `a3` = `00011`
+* rs1 = `a4` = `00100`
+* imm = `0` = `000000000000`
+* func3 = `010`
+
+**32 bits instruction:** `000000000000_00100_010_00011_0000011`
+
+----------------------------------------------
+
+### 5) `bne a3, a1, 101d8`
+* This is a B-type instruction used for conditional branching (branch if not equal).
+* If the values in registers `a3` and `a1` are not equal, the program counter will jump to the specified offset (`101d8`).
+* Opcode for `bne` = `1100011`
+* rs1 = `a3` = `00011`
+* rs2 = `a1` = `00001`
+* imm = `101d8` = `00000000000101110111000`
+* func3 = `001`
+
+**32 bits instruction:** `000000000001011_00011_001_00001_1100011`
+
+----------------------------------------------
+
+### 6) `sllw a3, a6, a5`
+* This is an R-type instruction used for performing a shift-left operation on a word.
+* The value in register `a6` is shifted left by the number of bits specified in register `a5`, and the result is stored in register `a3`.
+* Opcode for `sllw` = `0001011`
+* rd = `a3` = `00011`
+* rs1 = `a6` = `00110`
+* rs2 = `a5` = `00101`
+* func3 = `001`
+* func7 = `0000000`
+
+**32 bits instruction:** `0000000_00101_00110_001_00011_0001011`
+
+----------------------------------------------
+
+### 7) `or a0, a0, a3`
+* This is an R-type instruction used for performing a bitwise OR operation between two registers.
+* The values in registers `a0` and `a3` are bitwise OR’ed, and the result is stored in register `a0`.
+* Opcode for `or` = `0110011`
+* rd = `a0` = `00000`
+* rs1 = `a0` = `00000`
+* rs2 = `a3` = `00011`
+* func3 = `110`
+* func7 = `0000000`
+
+**32 bits instruction:** `0000000_00011_00000_110_00000_0110011`
+
+----------------------------------------------
+
+### 8) `slli a0, a0, 0x30`
+* This is an I-type instruction used for shifting a register value left by an immediate number of bits.
+* The value in register `a0` is shifted left by `0x30` (48 in decimal), and the result is stored in register `a0`.
+* Opcode for `slli` = `0010011`
+* rd = `a0` = `00000`
+* rs1 = `a0` = `00000`
+* imm = `0x30` = `000000110000`
+* func3 = `001`
+
+**32 bits instruction:** `000000110000_00000_001_00000_0010011`
+
+----------------------------------------------
+
+### 9) `sd ra, 88(sp)`
+* This is an S-type instruction used for storing a double word from a register to memory.
+* The value in register `ra` is stored at memory address `sp + 88`.
+* Opcode for `sd` = `0100011`
+* rs1 = `sp` = `11101`
+* rs2 = `ra` = `00000`
+* imm = `88` = `0000000010110000`
+* func3 = `011`
+
+**32 bits instruction:** `000000001011000_11101_011_00000_0100011`
+
+----------------------------------------------
+
+### 10) `mv a0, sp`
+* This is a pseudo-instruction that copies the value in `sp` to `a0`.
+* It is equivalent to `addi a0, sp, 0`.
+* Opcode for `addi` = `0010011`
+* rd = `a0` = `00000`
+* rs1 = `sp` = `11101`
+* imm = `0` = `000000000000`
+* func3 = `000`
+
+**32 bits instruction:** `000000000000_11101_000_00000_0010011`
+
+----------------------------------------------
+
+### 11) `lui a0, 0x21`
+* This is a U-type instruction used for loading an upper immediate value into a register.
+* The value `0x21` is loaded into the upper 20 bits of register `a0`.
+* Opcode for `lui` = `0110111`
+* rd = `a0` = `00000`
+* imm = `0x21` = `0000000000100001`
+
+**32 bits instruction:** `0000000000100001_00000_0000000_0110111`
+
+----------------------------------------------
+
+### 12) `jal ra, 10184`
+* This is a J-type instruction used for performing a jump and link operation.
+* The program counter is updated by the immediate value (`10184`), and the return address is stored in `ra`.
+* Opcode for `jal` = `1101111`
+* rd = `ra` = `00000`
+* imm = `10184` = `000000000001010010000`
+
+**32 bits instruction:** `000000000001010_00000_0000000_1101111`
+
+----------------------------------------------
+
+### 13) `li a0, 0`
+* This is a pseudo-instruction equivalent to `addi a0, x0, 0`.
+* Opcode for `addi` = `0010011`
+* rd = `a0` = `00000`
+* rs1 = `x0` = `00000`
+* imm = `0` = `000000000000`
+* func3 = `000`
+
+**32 bits instruction:** `000000000000_00000_000_00000_0010011`
+
+----------------------------------------------
+
+### 14) `ld ra, 88(sp)`
+* This is an I-type instruction used for loading a double word from memory.
+* The value at memory address `sp + 88` is loaded into register `ra`.
+* Opcode for `ld` = `0000011`
+* rd = `ra` = `00000`
+* rs1 = `sp` = `11101`
+* imm = `88` = `0000000010110000`
+* func3 = `011`
+
+**32 bits instruction:** `000000001011000_11101_011_00000_0000011`
+
+----------------------------------------------
+
+### 15) `beqz a5, 102f0`
+* This is a B-type instruction used for conditional branching (branch if equal to zero).
+* If the value in register `a5` is zero, the program counter will jump to the specified offset (`102f0`).
+* Opcode for `beqz` = `1100011`
+* rs1 = `a5` = `00101`
+* rs2 = `x0` = `00000`
+* imm = `102f0` = `000000000010111100000`
+* func3 = `000`
+
+**32 bits instruction:** `000000000010111_00101_000_00000_1100011`
+
 </details>
 
