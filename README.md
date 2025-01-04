@@ -164,10 +164,9 @@ There are six primary instruction formats in RISC-V:
   <img src="/Task 3/Instruction_Types.png">
 </p>
 
-### 1. R-type Instruction
+#### 1. R-type Instruction
 In RV32, each instruction is 32 bits in size. R-type instructions perform operations on registers (not memory) and are used for various arithmetic and logical operations. The 32-bit instruction is divided into six fields:
 
-#### R-type
  <p align="center">
   <img src="/Task 3/Instruction_R_Type.png">
 </p>
@@ -178,10 +177,9 @@ In RV32, each instruction is 32 bits in size. R-type instructions perform operat
 - **rs1, rs2** (5 bits each): Source registers used in the operation.
 - **func7** (7 bits): Further specifies the operation.
 
-### 2. I-type Instruction
+#### 2. I-type Instruction
 I-type instructions involve operations that use both registers and an immediate value (not memory). These instructions are used for immediate and load operations. The instruction format is as follows:
 
-#### I-type
  <p align="center">
   <img src="/Task 3/Instruction_I_Type.png">
 </p>
@@ -192,10 +190,9 @@ I-type instructions involve operations that use both registers and an immediate 
 - **rs1** (5 bits): Source register.
 - **imm[11:0]** (12 bits): A 12-bit signed immediate value used in the operation.
 
-### 3. S-type Instruction
+#### 3. S-type Instruction
 S-type instructions are used for store operations where data is stored from a register to memory. The 32-bit instruction is divided as follows:
 
-#### S-type
  <p align="center">
   <img src="/Task 3/Instruction_S_Type.png">
 </p>
@@ -206,10 +203,9 @@ S-type instructions are used for store operations where data is stored from a re
 - **rs2** (5 bits): The register containing the address where data should be stored.
 - **func3** (3 bits): Specifies the type of store (byte, half-word, or word).
 
-### 4. B-type Instruction
+#### 4. B-type Instruction
 B-type instructions are used for conditional branching based on comparisons. The 32-bit instruction format is as follows:
 
-#### B-type
  <p align="center">
   <img src="/Task 3/Instruction_B_Type.png">
 </p>
@@ -219,12 +215,11 @@ B-type instructions are used for conditional branching based on comparisons. The
 - **rs1, rs2** (5 bits each): Source registers involved in the comparison.
 - **func3** (3 bits): Defines the condition used for branching.
 
-### 5. U-type Instruction
+#### 5. U-type Instruction
 U-type instructions are used to transfer an immediate value into the destination register. The format is simple and involves only two instructions: `LUI` and `AUIPC`.
 
-#### B-type
  <p align="center">
-  <img src="/Task 3/Instruction_B_Type.png">
+  <img src="/Task 3/Instruction_U_Type.png">
 </p>
 
 - **opcode** (7 bits): Specifies the type of instruction.
@@ -233,10 +228,9 @@ U-type instructions are used to transfer an immediate value into the destination
 
 For example, the instruction `lui x15, 0x13579` would load the value `0x13579000` into the upper 20 bits of register `x15`.
 
-### 6. J-type Instruction
+#### 6. J-type Instruction
 J-type instructions are used for jump operations. These instructions are often used for loops and branching to a specified memory location. The format is as follows:
 
-#### J-type
  <p align="center">
   <img src="/Task 3/Instruction_J_Type.png">
 </p>
