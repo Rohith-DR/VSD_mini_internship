@@ -737,22 +737,23 @@ int main() {
 >***NOTE:** Since the designing of RISCV Architecture and writing it's testbench is not the part of this Research Internship, so we will use the Verilog Code and Testbench of RISCV that has already been designed. The reference GitHub repository is : [iiitb_rv32i](https://github.com/vinayrayapati/rv32i/)*    
   
 ### Steps to perform functional simulation of RISCV 
-1. download the ```iiitb_rv32i.v``` and ```iiitb_rv32i_tb.v``` files from (https://github.com/vinayrayapati/rv32i/)* 
-2. Create a new directory with your name ```mkdir <your_name>```
-3. Copy the files ```iiitb_rv32i.v``` and ```iiitb_rv32i_tb.v``` to this directory
+1. download the ```iiitb_rv32i.v``` and ```iiitb_rv32i_tb.v``` files from
+https://github.com/vinayrayapati/rv32i/
+3. Create a new directory with your name ```mkdir <your_name>```
+4. Copy the files ```iiitb_rv32i.v``` and ```iiitb_rv32i_tb.v``` to this directory
   
   
-4. To run and simulate the verilog code, enter the following command:  
+5. To run and simulate the verilog code, enter the following command:  
 	```
 	$ iverilog -o iiitb_rv32i iiitb_rv32i.v iiitb_rv32i_tb.v
 	$ ./iiitb_rv32i
 	```
-5. To see the simulation waveform in GTKWave, enter the following command:
+6. To see the simulation waveform in GTKWave, enter the following command:
 	```
 	$ gtkwave iiitb_rv32i.vcd
 	```
 
-6. The GTKWave will be opened and following window will be appeared  
+7. The GTKWave will be opened and following window will be appeared  
 
  <p align="center">
   <img width="500" src="/Task 4/GTKWave Window.png">
