@@ -6,7 +6,7 @@
 **College:** Global Academy of Technology  
 **Email ID:** rohithrohith838@gmail.com  
 **GitHub Profile:** [Rohith-DR](https://github.com/Rohith-DR?tab=repositories)  
-**LinkedIN Profile:** [maazm-ece-vlsi](https://www.linkedin.com/in/rohith-dr/)
+**LinkedIN Profile:** [Rohith-DR](https://www.linkedin.com/in/rohith-dr/)
 
 -------------------------------------------------
 
