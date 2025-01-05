@@ -755,13 +755,13 @@ int main() {
 6. The GTKWave will be opened and following window will be appeared  
 
  <p align="center">
-  <img width="500" src="/Task 4/add.png">
+  <img width="500" src="/Task 4/GTKWave Window.png">
 </p>
  
 #### As shown in the figure below, all the instructions in the given verilog file is hard-coded. Hard-coded means that instead of following the RISCV specifications bit pattern, the designer has hard-coded each instructions based on their own pattern. Hence the 32-bits instruction that we generated in Task-2 will not match with the given instruction.  
   
  <p align="center">
-  <img width="500" src="/Task 4/add.png">
+  <img width="500" src="/Task 4/Instructions.png">
 </p>
   
 #### Following are the differences between standard RISCV ISA and the Instruction Set given in the reference repository:  
@@ -783,6 +783,7 @@ int main() {
   
 
 #### *Analysing the Output Waveform of various instructions that we have covered in TASK-2*  
+
 **```Instruction 1: ADD R6, R2, R1```**
 
 <p align="center">
@@ -839,23 +840,7 @@ int main() {
 
 ---
 
-**```Instruction 8: SW R3, R1, 2```**
-
-<p align="center">
-  <img width="500" src="/Task 4/sw.png">
-</p>
-
----
-
-**```Instruction 9: LW R13, R1, 2```**
-
-<p align="center">
-  <img width="500" src="/Task 4/lw.png">
-</p>
-
----
-
-**```Instruction 10: BEQ R0, R0, 15```**
+**```Instruction 8: BEQ R0, R0, 15```**
 
 <p align="center">
   <img width="500" src="/Task 4/beq.png">
@@ -863,15 +848,7 @@ int main() {
 
 ---
 
-**```Instruction 11: ADD R14, R2, R2```**
-
-<p align="center">
-  <img width="500" src="/Task 4/add_r14.png">
-</p>
-
----
-
-**```Instruction 12: BNE R0, R1, 20```**
+**```Instruction 9: BNE R0, R1, 20```**
 
 <p align="center">
   <img width="500" src="/Task 4/bne.png">
@@ -879,26 +856,10 @@ int main() {
 
 ---
 
-**```Instruction 13: ADDI R12, R4, 5```**
-
-<p align="center">
-  <img width="500" src="/Task 4/addi_duplicate.png">
-</p>
-
----
-
-**```Instruction 14: SLL R15, R1, R2(2)```**
+**```Instruction 10: SLL R15, R1, R2(2)```**
 
 <p align="center">
   <img width="500" src="/Task 4/sll.png">
-</p>
-
----
-
-**```Instruction 15: SRL R16, R14, R2(2)```**
-
-<p align="center">
-  <img width="500" src="/Task 4/srl.png">
 </p>
 
 </details>  
