@@ -889,7 +889,6 @@ The Shipment Tracking System integrates an MPU6050 accelerometer sensor with the
 - CH32V003 RISC-V Processor
 - MPU6050 Accelerometer and Gyroscope Sensor
 - Power Supply
-- Breadboard
 - Jumper Wires
 
 ## System Specifications
