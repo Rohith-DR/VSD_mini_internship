@@ -904,6 +904,9 @@ The Shipment Tracking System integrates an MPU6050 accelerometer sensor with the
 - Communication Protocol: I2C
 
 ## Circuit Connections
+<p align="center">
+  <img width="500" src="/Task 5/circuit_image.png">
+</p>
 
 ### Connections:
 1. **MPU6050 VCC**: Connect to `VIN` of CH32V003.
