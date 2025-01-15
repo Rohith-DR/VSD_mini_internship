@@ -798,7 +798,7 @@ https://github.com/vinayrayapati/rv32i/
 **```Instruction 1: ADD R6, R2, R1```**
 
 <p align="center">
-  <img width="500" src="/Task 4/add.png">
+  <img width="500" src="/Task 4/ADD.png">
 </p>
 
 ---
@@ -806,7 +806,7 @@ https://github.com/vinayrayapati/rv32i/
 **```Instruction 2: SUB R7, R1, R2```**
 
 <p align="center">
-  <img width="500" src="/Task 4/sub.png">
+  <img width="500" src="/Task 4/SUB.png">
 </p>
 
 ---
@@ -814,7 +814,7 @@ https://github.com/vinayrayapati/rv32i/
 **```Instruction 3: AND R8, R1, R3```**
 
 <p align="center">
-  <img width="500" src="/Task 4/and.png">
+  <img width="500" src="/Task 4/AND.png">
 </p>
 
 ---
@@ -822,7 +822,7 @@ https://github.com/vinayrayapati/rv32i/
 **```Instruction 4: OR R9, R2, R5```**
 
 <p align="center">
-  <img width="500" src="/Task 4/or.png">
+  <img width="500" src="/Task 4/OR.png">
 </p>
 
 ---
@@ -830,7 +830,7 @@ https://github.com/vinayrayapati/rv32i/
 **```Instruction 5: XOR R10, R1, R4```**
 
 <p align="center">
-  <img width="500" src="/Task 4/xor.png">
+  <img width="500" src="/Task 4/XOR.png">
 </p>
 
 ---
@@ -838,7 +838,7 @@ https://github.com/vinayrayapati/rv32i/
 **```Instruction 6: SLT R11, R2, R4```**
 
 <p align="center">
-  <img width="500" src="/Task 4/slt.png">
+  <img width="500" src="/Task 4/SLT.png">
 </p>
 
 ---
@@ -846,7 +846,7 @@ https://github.com/vinayrayapati/rv32i/
 **```Instruction 7: ADDI R12, R4, 5```**
 
 <p align="center">
-  <img width="500" src="/Task 4/addi.png">
+  <img width="500" src="/Task 4/ADDI.png">
 </p>
 
 ---
@@ -854,23 +854,23 @@ https://github.com/vinayrayapati/rv32i/
 **```Instruction 8: BEQ R0, R0, 15```**
 
 <p align="center">
-  <img width="500" src="/Task 4/beq.png">
+  <img width="500" src="/Task 4/BEQ.png">
 </p>
 
 ---
 
-**```Instruction 9: BNE R0, R1, 20```**
+**```Instruction 9: 	SW R3, R1, 2```**
 
 <p align="center">
-  <img width="500" src="/Task 4/bne.png">
+  <img width="500" src="/Task 4/SW.png">
 </p>
 
 ---
 
-**```Instruction 10: SLL R15, R1, R2(2)```**
+**```Instruction 10: 	LW R13, R1, 2```**
 
 <p align="center">
-  <img width="500" src="/Task 4/sll.png">
+  <img width="500" src="/Task 4/LW.png">
 </p>
 
 </details>  
