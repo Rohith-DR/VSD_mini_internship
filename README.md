@@ -874,3 +874,121 @@ https://github.com/vinayrayapati/rv32i/
 </p>
 
 </details>  
+
+-----------------------------------
+
+<details>
+<summary><b>Task 5:</b> Final Task of this internship is to implement any circuit using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works</summary>  
+
+# Shipment Tracking System
+
+## Overview
+The Shipment Tracking System integrates an MPU6050 accelerometer sensor with the CH32V003 RISC-V processor to provide real-time tracking of shipment conditions. This system monitors movement, tilt, and vibrations, ensuring that shipments are handled appropriately during transit. The MPU6050 sensor communicates detected motion data to the CH32V003 processor, which processes the information and triggers alerts if any irregularities are detected. By leveraging this technology, the project offers an efficient and automated solution for shipment monitoring and tracking.
+
+## Components Required
+- CH32V003 RISC-V Processor
+- MPU6050 Accelerometer and Gyroscope Sensor
+- Power Supply
+- Breadboard
+- Jumper Wires
+
+## System Specifications
+### CH32V003 RISC-V Processor
+- Voltage: 1.8V to 3.6V
+- Communication Protocols: I2C, SPI, UART
+- GPIO Pins: Configurable for interfacing with external devices
+
+### MPU6050 Accelerometer Sensor
+- Voltage: 3.3V or 5V
+- Features: Acceleration and angular velocity detection across three axes
+- Communication Protocol: I2C
+
+## Circuit Connections
+
+### Connections:
+1. **MPU6050 VCC**: Connect to `VIN` of CH32V003.
+2. **MPU6050 GND**: Connect to `GND` of CH32V003.
+3. **MPU6050 SCL (I2C Clock)**: Connect to `PC5` of CH32V003.
+4. **MPU6050 SDA (I2C Data)**: Connect to `PC6` of CH32V003.
+
+### Pinout Diagram:
+
+| Component          | CH32V003x Pin |
+|--------------------|---------------|
+| MPU6050 VCC       | VIN           |
+| MPU6050 GND       | GND           |
+| MPU6050 SCL       | PC5            |
+| MPU6050 SDA       | PC6            |
+
+## How to Program
+
+The following code initializes the MPU6050 sensor and processes motion data to detect irregularities. If an alert condition occurs, the inbuilt LED on the CH32V003 processor blinks to indicate an issue.
+
+```c
+#include <ch32v00x.h>
+#include <debug.h>
+#include "mpu6050.h"
+
+#define ALERT_CONDITION_THRESHOLD 10 // Threshold for alert condition
+
+void GPIO_Config(void);
+void Blink_LED(void);
+
+int main(void) {
+    uint8_t alert = 0;
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+    SystemCoreClockUpdate();
+    Delay_Init();
+    GPIO_Config();
+    MPU6050_Init();
+
+    while (1) {
+        int16_t ax, ay, az;
+        MPU6050_Get_Accel(&ax, &ay, &az);
+
+        // Check for alert condition (e.g., excessive acceleration)
+        if (abs(ax) > ALERT_CONDITION_THRESHOLD || abs(ay) > ALERT_CONDITION_THRESHOLD || abs(az) > ALERT_CONDITION_THRESHOLD) {
+            alert = 1;
+        } else {
+            alert = 0;
+        }
+
+        if (alert) {
+            Blink_LED();
+        } else {
+            GPIO_WriteBit(GPIOD, GPIO_Pin_6, RESET); // Turn off LED
+        }
+
+        Delay_Ms(100);
+    }
+}
+
+void GPIO_Config(void) {
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
+
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6; // Inbuilt LED pin
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+}
+
+void Blink_LED(void) {
+    for (int i = 0; i < 5; i++) { // Blink 5 times
+        GPIO_WriteBit(GPIOD, GPIO_Pin_6, SET);
+        Delay_Ms(200);
+        GPIO_WriteBit(GPIOD, GPIO_Pin_6, RESET);
+        Delay_Ms(200);
+    }
+}
+
+void NMI_Handler(void) {}
+void HardFault_Handler(void) {
+    while (1) {}
+}
+```
+
+
+
+
