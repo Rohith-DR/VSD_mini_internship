@@ -752,7 +752,7 @@ int main() {
 ----------------------------------------------
 
 <details>
-<summary><b>Task 4:</b>Use RISCV Core: Verilog Netlist and Testbench to conduct a functional simulation experiment and view the waveforms</summary>  
+<summary><b>Task 4:</b> Use RISCV Core: Verilog Netlist and Testbench to conduct a functional simulation experiment and view the waveforms</summary>  
 <br>
 
 >***NOTE:** Since this research internship does not include building the RISCV architecture or writing its testbench, we will utilize the pre-existing Verilog code and testbench. The GitHub repository used as a reference is : [iiitb_rv32i](https://github.com/vinayrayapati/rv32i/)*    
@@ -889,7 +889,7 @@ https://github.com/vinayrayapati/rv32i/
 -----------------------------------
 
 <details>
-<summary><b>Task 5:</b>implementation of any circuit utilizing VSDSquadron Mini and verify that the RISCV processor's C program file upload and construction are successful</summary> 
+<summary><b>Task 5:</b> Implementation of any circuit utilizing VSDSquadron Mini and verify that the RISCV processor's C program file upload and construction are successful</summary> 
 
 # Shipment Tracking System
 
