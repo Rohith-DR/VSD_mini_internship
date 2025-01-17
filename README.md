@@ -20,7 +20,7 @@ The VSDsquadron Mini is a compact RISC-V development board designed for hobbyist
 -------------------------------------------------
 
 <details>
-<summary><b>Task 1:</b> Task is to refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler</summary>
+<summary><b>Task 1:</b> The assignment is to watch lab videos that are based on C and RISCV and then use the gcc and riscv compilers to compile the C code</summary>
 
 ### C Language based LAB
 We have to follow the given steps to compile any **.c** file in our machine:  
@@ -93,7 +93,7 @@ We have to do the same compilation of our code but this time using RISCV gcc com
 -------------------------------------------------
 
 <details>
-<summary><b>Task 2:</b> Performing SPIKE Simulation and Debugging the C code with Interactive Debugging Mode using Spike</summary> 
+<summary><b>Task 2:</b> Using Spike Simulation and Interactive Debugging Mode to Debugg the C code during Spike</summary> 
 
 ### What is SPIKE in RISCV?
 > * A RISC-V ISA is a simulator, enabling the testing and analysis of RISC-V programs without the need for actual hardware.  
@@ -752,10 +752,10 @@ int main() {
 ----------------------------------------------
 
 <details>
-<summary><b>Task 4:</b> By making use of RISCV Core: Verilog Netlist and Testbench, perform an experiment of Functional Simulation and observe the waveforms</summary>  
+<summary><b>Task 4:</b>Use RISCV Core: Verilog Netlist and Testbench to conduct a functional simulation experiment and view the waveforms</summary>  
 <br>
 
->***NOTE:** Since the designing of RISCV Architecture and writing it's testbench is not the part of this Research Internship, so we will use the Verilog Code and Testbench of RISCV that has already been designed. The reference GitHub repository is : [iiitb_rv32i](https://github.com/vinayrayapati/rv32i/)*    
+>***NOTE:** Since this research internship does not include building the RISCV architecture or writing its testbench, we will utilize the pre-existing Verilog code and testbench. The GitHub repository used as a reference is : [iiitb_rv32i](https://github.com/vinayrayapati/rv32i/)*    
   
 ### Steps to perform functional simulation of RISCV 
 1. download the ```iiitb_rv32i.v``` and ```iiitb_rv32i_tb.v``` files from
@@ -780,7 +780,7 @@ https://github.com/vinayrayapati/rv32i/
   <img width="500" src="/Task 4/GTKWave Window.png">
 </p>
  
-#### As shown in the figure below, all the instructions in the given verilog file is hard-coded. Hard-coded means that instead of following the RISCV specifications bit pattern, the designer has hard-coded each instructions based on their own pattern. Hence the 32-bits instruction that we generated in Task-2 will not match with the given instruction.  
+#### Every instruction in the provided verilog file is hard-coded, as seen in the picture below. Hard-coded indicates that each instruction has been hard-coded according to the designer's own pattern rather than adhering to the RISCV specifications bit pattern. As a result, the 32-bit instruction we produced in Task 3 will not correspond to the specified instruction.  
   
  <p align="center">
   <img width="500" src="/Task 4/Instructions.png">
@@ -870,7 +870,7 @@ https://github.com/vinayrayapati/rv32i/
 
 ---
 
-**```Instruction 9: 	SW R3, R1, 2```**
+**```Instruction 9: SW R3, R1, 2```**
 
 <p align="center">
   <img width="500" src="/Task 4/SW.png">
@@ -878,7 +878,7 @@ https://github.com/vinayrayapati/rv32i/
 
 ---
 
-**```Instruction 10: 	LW R13, R1, 2```**
+**```Instruction 10: LW R13, R1, 2```**
 
 <p align="center">
   <img width="500" src="/Task 4/LW.png">
@@ -889,7 +889,7 @@ https://github.com/vinayrayapati/rv32i/
 -----------------------------------
 
 <details>
-<summary><b>Task 5:</b>implementation of any circuit using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works</summary> 
+<summary><b>Task 5:</b>implementation of any circuit utilizing VSDSquadron Mini and verify that the RISCV processor's C program file upload and construction are successful</summary> 
 
 # Shipment Tracking System
 
@@ -921,8 +921,8 @@ The Shipment Tracking System integrates an MPU6050 accelerometer sensor with the
 ### Connections:
 1. **MPU6050 VCC**: Connect to `VIN` of CH32V003.
 2. **MPU6050 GND**: Connect to `GND` of CH32V003.
-3. **MPU6050 SCL (I2C Clock)**: Connect to `PC5` of CH32V003.
-4. **MPU6050 SDA (I2C Data)**: Connect to `PC6` of CH32V003.
+3. **MPU6050 SCL (I2C Clock)**: Connect to `PC2` of CH32V003.
+4. **MPU6050 SDA (I2C Data)**: Connect to `PC1` of CH32V003.
 
 ### Pinout Diagram:
 
@@ -930,8 +930,8 @@ The Shipment Tracking System integrates an MPU6050 accelerometer sensor with the
 |--------------------|---------------|
 | MPU6050 VCC       | VIN           |
 | MPU6050 GND       | GND           |
-| MPU6050 SCL       | PC5            |
-| MPU6050 SDA       | PC6            |
+| MPU6050 SCL       | PC2            |
+| MPU6050 SDA       | PC1            |
 
 ## How to Program
 
