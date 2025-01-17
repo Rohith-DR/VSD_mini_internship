@@ -1,5 +1,8 @@
 # VSDSquadron Mini Internship 2024
 
+## Overview
+The VSDSquadron Mini Internship 2024 is an intensive, short-term internship program designed to provide participants with hands-on experience in the fields of VLSI design, semiconductor technology, and related domains. Tailored for engineering students, recent graduates, and aspiring technologists, this program bridges the gap between academic knowledge and industry-ready skills.
+
 ##  Basic Details
 
 **Name:** Rohith DR  
