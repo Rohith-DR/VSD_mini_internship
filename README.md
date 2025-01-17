@@ -258,200 +258,202 @@ J-type instructions are used for jump operations. These instructions are often u
 <details>
 <summary>Now, let's analyse each instruction one by one</summary>
 	
-### 1) `add r6, r1, r2`
-* This is an R-type instruction used for addition.
-* The value in register `r1` is added to the value in register `r2`, and the result is stored in `r6`.
-* Opcode for `add` = `0110011`
-* rd = `r6` = `0110`
-* rs1 = `r1` = `00001`
-* rs2 = `r2` = `00010`
-* func3 = `000`
-* func7 = `0000000`
+# RISC-V Instructions Explanation
 
-**32-bit instruction:** `0000000_00010_00001_000_0110_0110011`
+This document provides a detailed explanation of the given RISC-V assembly instructions, including their types, functionality, and corresponding 32-bit representations.
 
----
-
-### 2) `sub r7, r1, r2`
-* This is an R-type instruction used for subtraction.
-* The value in register `r2` is subtracted from the value in register `r1`, and the result is stored in `r7`.
-* Opcode for `sub` = `0110011`
-* rd = `r7` = `0111`
-* rs1 = `r1` = `00001`
-* rs2 = `r2` = `00010`
-* func3 = `000`
-* func7 = `0100000`
-
-**32-bit instruction:** `0100000_00010_00001_000_0111_0110011`
+### 1. `add a5, a4, a5`
+- **Type**: R-type  
+- **Description**: Adds the values in `a4` and `a5`, and stores the result in `a5`.  
+- **Fields**:  
+  - **opcode**: 0110011  
+  - **rd**: a5 = 10101  
+  - **rs1**: a4 = 10100  
+  - **rs2**: a5 = 10101  
+  - **func3**: 000  
+  - **func7**: 0000000  
+- **32-bit Instruction**: `0000000_10101_10100_000_10101_0110011`
 
 ---
 
-### 3) `and r8, r1, r3`
-* This is an R-type instruction used for bitwise AND.
-* The value in register `r1` is ANDed with the value in register `r3`, and the result is stored in `r8`.
-* Opcode for `and` = `0110011`
-* rd = `r8` = `1000`
-* rs1 = `r1` = `00001`
-* rs2 = `r3` = `00011`
-* func3 = `111`
-* func7 = `0000000`
-
-**32-bit instruction:** `0000000_00011_00001_111_1000_0110011`
-
----
-
-### 4) `or r9, r2, r5`
-* This is an R-type instruction used for bitwise OR.
-* The value in register `r2` is ORed with the value in register `r5`, and the result is stored in `r9`.
-* Opcode for `or` = `0110011`
-* rd = `r9` = `1001`
-* rs1 = `r2` = `00010`
-* rs2 = `r5` = `00101`
-* func3 = `110`
-* func7 = `0000000`
-
-**32-bit instruction:** `0000000_00101_00010_110_1001_0110011`
+### 2. `addi a2, a3, 4`
+- **Type**: I-type  
+- **Description**: Adds the immediate value `4` to the value in `a3`, and stores the result in `a2`.  
+- **Fields**:  
+  - **opcode**: 0010011  
+  - **rd**: a2 = 10010  
+  - **rs1**: a3 = 10011  
+  - **imm**: 0000000000000100  
+  - **func3**: 000  
+- **32-bit Instruction**: `0000000000000100_10011_000_10010_0010011`
 
 ---
 
-### 5) `xor r10, r1, r4`
-* This is an R-type instruction used for bitwise XOR.
-* The value in register `r1` is XORed with the value in register `r4`, and the result is stored in `r10`.
-* Opcode for `xor` = `0110011`
-* rd = `r10` = `1010`
-* rs1 = `r1` = `00001`
-* rs2 = `r4` = `00100`
-* func3 = `100`
-* func7 = `0000000`
-
-**32-bit instruction:** `0000000_00100_00001_100_1010_0110011`
-
----
-
-### 6) `slt r11, r2, r4`
-* This is an R-type instruction used for set if less than.
-* If the value in `r2` is less than the value in `r4`, `r11` is set to 1; otherwise, it is set to 0.
-* Opcode for `slt` = `0110011`
-* rd = `r11` = `1011`
-* rs1 = `r2` = `00010`
-* rs2 = `r4` = `00100`
-* func3 = `010`
-* func7 = `0000000`
-
-**32-bit instruction:** `0000000_00100_00010_010_1011_0110011`
+### 3. `sub a1, a1, a2`
+- **Type**: R-type  
+- **Description**: Subtracts the value in `a2` from the value in `a1`, and stores the result in `a1`.  
+- **Fields**:  
+  - **opcode**: 0110011  
+  - **rd**: a1 = 10001  
+  - **rs1**: a1 = 10001  
+  - **rs2**: a2 = 10010  
+  - **func3**: 000  
+  - **func7**: 0100000  
+- **32-bit Instruction**: `0100000_10010_10001_000_10001_0110011`
 
 ---
 
-### 7) `addi r12, r4, 5`
-* This is an I-type instruction used for addition with an immediate value.
-* The value in register `r4` is added to `5`, and the result is stored in `r12`.
-* Opcode for `addi` = `0010011`
-* rd = `r12` = `1100`
-* rs1 = `r4` = `00100`
-* imm = `5` = `0000000000000101`
-* func3 = `000`
-
-**32-bit instruction:** `0000000000000101_00100_000_1100_0010011`
-
----
-
-### 8) `sw r3, r1, 2`
-* This is an S-type instruction used to store a word.
-* The value in register `r3` is stored at the memory address obtained by adding `2` to the value in `r1`.
-* Opcode for `sw` = `0100011`
-* rs1 = `r1` = `00001`
-* rs2 = `r3` = `00011`
-* imm = `2` = `0000000000000010`
-* func3 = `010`
-
-**32-bit instruction:** `0000000_00011_00001_010_00010_0100011`
+### 4. `and a5, a5, a2`
+- **Type**: R-type  
+- **Description**: Performs a bitwise AND operation between the values in `a5` and `a2`, and stores the result in `a5`.  
+- **Fields**:  
+  - **opcode**: 0110011  
+  - **rd**: a5 = 10101  
+  - **rs1**: a5 = 10101  
+  - **rs2**: a2 = 10010  
+  - **func3**: 111  
+  - **func7**: 0000000  
+- **32-bit Instruction**: `0000000_10010_10101_111_10101_0110011`
 
 ---
 
-### 9) `lw r13, r1, 2`
-* This is an I-type instruction used to load a word.
-* A word is loaded from the memory address obtained by adding `2` to the value in `r1`, and the result is stored in `r13`.
-* Opcode for `lw` = `0000011`
-* rd = `r13` = `1101`
-* rs1 = `r1` = `00001`
-* imm = `2` = `0000000000000010`
-* func3 = `010`
-
-**32-bit instruction:** `0000000000000010_00001_010_1101_0000011`
-
----
-
-### 10) `beq r0, r0, 15`
-* This is a B-type instruction used for conditional branching (branch if equal).
-* If the value in register `r0` equals the value in `r0`, the program counter will jump to the specified offset (`15`).
-* Opcode for `beq` = `1100011`
-* rs1 = `r0` = `00000`
-* rs2 = `r0` = `00000`
-* imm = `15` = `0000000000001111`
-* func3 = `000`
-
-**32-bit instruction:** `0000000_00000_00000_000_01111_1100011`
+### 5. `or a5, a5, a6`
+- **Type**: R-type  
+- **Description**: Performs a bitwise OR operation between the values in `a5` and `a6`, and stores the result in `a5`.  
+- **Fields**:  
+  - **opcode**: 0110011  
+  - **rd**: a5 = 10101  
+  - **rs1**: a5 = 10101  
+  - **rs2**: a6 = 10110  
+  - **func3**: 110  
+  - **func7**: 0000000  
+- **32-bit Instruction**: `0000000_10110_10101_110_10101_0110011`
 
 ---
 
-### 11) `add r14, r2, r2`
-* This is an R-type instruction used for addition.
-* The value in register `r2` is added to the value in `r2`, and the result is stored in `r14`.
-* Opcode for `add` = `0110011`
-* rd = `r14` = `1110`
-* rs1 = `r2` = `00010`
-* rs2 = `r2` = `00010`
-* func3 = `000`
-* func7 = `0000000`
-
-**32-bit instruction:** `0000000_00010_00010_000_1110_0110011`
-
----
-
-### 12) `bne r0, r1, 20`
-* This is a B-type instruction used for conditional branching (branch if not equal).
-* If the value in register `r0` is not equal to the value in register `r1`, the program counter will jump to the specified offset (`20`).
-* Opcode for `bne` = `1100011`
-* rs1 = `r0` = `00000`
-* rs2 = `r1` = `00001`
-* imm = `20` = `0000000000010100`
-* func3 = `001`
-
-**32-bit instruction:** `0000000_00001_00000_001_10100_1100011`
+### 6. `xor a4, a7, a4`
+- **Type**: R-type  
+- **Description**: Performs a bitwise XOR operation between the values in `a7` and `a4`, and stores the result in `a4`.  
+- **Fields**:  
+  - **opcode**: 0110011  
+  - **rd**: a4 = 10100  
+  - **rs1**: a7 = 10111  
+  - **rs2**: a4 = 10100  
+  - **func3**: 100  
+  - **func7**: 0000000  
+- **32-bit Instruction**: `0000000_10100_10111_100_10100_0110011`
 
 ---
 
-### 13) `addi r12, r4, 5`
-* This is identical to instruction 7.
+### 7. `lw a2, 20(sp)`
+- **Type**: I-type  
+- **Description**: Loads a word from the memory address obtained by adding `20` to the value in `sp`, and stores it in `a2`.  
+- **Fields**:  
+  - **opcode**: 0000011  
+  - **rd**: a2 = 10010  
+  - **rs1**: sp = 00010  
+  - **imm**: 0000000000010100  
+  - **func3**: 010  
+- **32-bit Instruction**: `0000000000010100_00010_010_10010_0000011`
 
 ---
 
-### 14) `sll r15, r1, r2(2)`
-* This is an R-type instruction used for shift left logical.
-* The value in `r1` is shifted left by the amount specified in the lower bits of `r2`, and the result is stored in `r15`.
-* Opcode for `sll` = `0110011`
-* rd = `r15` = `1111`
-* rs1 = `r1` = `00001`
-* rs2 = `r2` = `00010`
-* func3 = `001`
-* func7 = `0000000`
-
-**32-bit instruction:** `0000000_00010_00001_001_1111_0110011`
+### 8. `sw a5, 28(sp)`
+- **Type**: S-type  
+- **Description**: Stores the value in `a5` at the memory address obtained by adding `28` to the value in `sp`.  
+- **Fields**:  
+  - **opcode**: 0100011  
+  - **rs1**: sp = 00010  
+  - **rs2**: a5 = 10101  
+  - **imm**: 0000000000011100  
+  - **func3**: 010  
+- **32-bit Instruction**: `0000000_10101_00010_010_11100_0100011`
 
 ---
 
-### 15) `srl r16, r14, r2(2)`
-* This is an R-type instruction used for shift right logical.
-* The value in `r14` is shifted right logically by the amount specified in the lower bits of `r2`, and the result is stored in `r16`.
-* Opcode for `srl` = `0110011`
-* rd = `r16` = `10000`
-* rs1 = `r14` = `1110`
-* rs2 = `r2` = `00010`
-* func3 = `101`
-* func7 = `0000000`
+### 9. `beq s2, a2, 21978`
+- **Type**: B-type  
+- **Description**: Branches to the address offset `21978` if `s2` equals `a2`.  
+- **Fields**:  
+  - **opcode**: 1100011  
+  - **rs1**: s2 = 10110  
+  - **rs2**: a2 = 10010  
+  - **imm**: 000000010101101110  
+  - **func3**: 000  
+- **32-bit Instruction**: `0000000_10010_10110_000_1010111010_1100011`
 
-**32-bit instruction:** `0000000_00010_1110_101_10000_0110011`
+---
 
+### 10. `bne a2, a5, 2174c`
+- **Type**: B-type  
+- **Description**: Branches to the address offset `2174c` if `a2` does not equal `a5`.  
+- **Fields**:  
+  - **opcode**: 1100011  
+  - **rs1**: a2 = 10010  
+  - **rs2**: a5 = 10101  
+  - **imm**: 000000010001110100  
+  - **func3**: 001  
+- **32-bit Instruction**: `0000000_10101_10010_001_1001110100_1100011`
+
+---
+
+### 11. `sll a7, a7, a4`
+- **Type**: R-type  
+- **Description**: Performs a logical left shift of `a7` by the number of positions specified in the lower bits of `a4`, and stores the result in `a7`.  
+- **Fields**:  
+  - **opcode**: 0110011  
+  - **rd**: a7 = 10111  
+  - **rs1**: a7 = 10111  
+  - **rs2**: a4 = 10100  
+  - **func3**: 001  
+  - **func7**: 0000000  
+- **32-bit Instruction**: `0000000_10100_10111_001_10111_0110011`
+
+---
+
+### 12. `lui a3, 0x80`
+- **Type**: U-type  
+- **Description**: Loads the value `0x80` into the upper 20 bits of `a3`.  
+- **Fields**:  
+  - **opcode**: 0110111  
+  - **rd**: a3 = 10011  
+  - **imm**: 000000000000100000  
+- **32-bit Instruction**: `000000000000100000_10011_0110111`
+
+---
+
+### 13. `jal ra, 247e4`
+- **Type**: J-type  
+- **Description**: Jumps to the address offset `247e4` and stores the return address in `ra`.  
+- **Fields**:  
+  - **opcode**: 1101111  
+  - **rd**: ra = 00001  
+  - **imm**: 0010010001111110100  
+- **32-bit Instruction**: `0010010001111110100_00001_1101111`
+
+---
+
+### 14. `jalr a5`
+- **Type**: I-type  
+- **Description**: Jumps to the address specified in `a5` and stores the return address in `ra`.  
+- **Fields**:  
+  - **opcode**: 1100111  
+  - **rd**: ra = 00001  
+  - **rs1**: a5 = 10101  
+  - **imm**: 0000000000000000  
+  - **func3**: 000  
+- **32-bit Instruction**: `0000000000000000_10101_000_00001_1100111`
+
+---
+
+### 15. `auipc a5, 0x6`
+- **Type**: U-type  
+- **Description**: Adds the immediate value `0x6` shifted left 12 bits to the current PC and stores the result in `a5`.  
+- **Fields**:  
+  - **opcode**: 0010111  
+  - **rd**: a5 = 10101  
+  - **imm**: 000000000000000110  
+- **32-bit Instruction**: `000000000000000110_10101_0010111`
 </details>
 
 # Example Application with its Instructions
