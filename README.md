@@ -889,7 +889,7 @@ https://github.com/vinayrayapati/rv32i/
 -----------------------------------
 
 <details>
-<summary><b>Task 5:</b> Final Task of this internship is to implement any circuit using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works</summary>  
+<summary><b>Task 5:</b>implementation of any circuit using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works</summary> 
 
 # Shipment Tracking System
 
