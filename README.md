@@ -938,7 +938,7 @@ https://github.com/vinayrayapati/rv32i/
 # Shipment Tracking System
 
 ## Overview
-The Shipment Tracking System integrates an MPU6050 accelerometer sensor with the CH32V003 RISC-V processor to provide real-time tracking of shipment conditions. This system monitors movement, tilt, and vibrations, ensuring that shipments are handled appropriately during transit. The MPU6050 sensor communicates detected motion data to the CH32V003 processor, which processes the information and triggers alerts if any irregularities are detected. By leveraging this technology, the project offers an efficient and automated solution for shipment monitoring and tracking.
+The Shipment Tracking System integrates an MPU6050 accelerometer sensor with the CH32V003 RISC-V processor to provide real-time tracking of shipment conditions. This system monitors movement and tilt ensuring that shipments are handled appropriately during transit. The MPU6050 sensor communicates detected motion data to the CH32V003 processor, which processes the information and triggers alerts if any irregularities are detected. By leveraging this technology, the project offers an efficient and automated solution for shipment monitoring and tracking.
 
 ## Components Required
 - CH32V003 RISC-V Processor
@@ -977,9 +977,34 @@ The Shipment Tracking System integrates an MPU6050 accelerometer sensor with the
 | MPU6050 SCL       | PC2            |
 | MPU6050 SDA       | PC1            |
 
+</details>
+
+---------------------------------------
+
+<details>
+<summary><b>Task 6:</b> The completed code along with a brief demonstration video of the application</summary> 
+
+## Complete setup 
+
+<p align="center">
+  <img width="500" src="/Task 6/complete_setup.jpg">
+</p>
+
+## Board_and_sensor
+
+<p align="center">
+  <img width="500" src="/Task 6/board_and_sensor.jpg">
+</p>
+
+## Interface_for_serial_monitor
+
+<p align="center">
+  <img width="500" src="/Task 6/for_serial_monitor.jpg">
+</p>
+
 ## How to Program
 
-The following code initializes the MPU6050 sensor and processes motion data to detect irregularities. If an alert condition occurs, the inbuilt LED on the CH32V003 processor blinks to indicate an issue.
+The following code initializes the MPU6050 sensor and processes motion data to detect irregularities. If an alert condition occurs, the inbuilt LED on the CH32V003 processor glows to indicate an issue and displays it on serial monitor.
 
 ```c
 #include <ch32v00x.h>
@@ -1222,7 +1247,13 @@ void HardFault_Handler(void) {
     while (1) {}
 }
 ```
+## Serial_monitor_output
+
+<p align="center">
+  <img width="500" src="/Task 6/for_serial_monitor.jpg">
+</p>
 
 
+![Watch the Application Video](https://drive.google.com/file/d/14cL-jTExLPgm1A3JFJyBjZHvAqvOKz-P/view?usp=sharing)
 
-
+</details>
