@@ -1264,7 +1264,7 @@ void HardFault_Handler(void) {
 <summary>Acknowledgement</summary>  
 <br>  
 
-**I want to thank Kunal Ghosh Sir for giving me this amazing internship opportunity in RISC-V Architecture with the VSDSquadron Mini. This chance offered me the ideal kickoff and stoked my desire to learn more about the RISC-V world. This internship program was a very inspiring and fulfilling experience. I want to express my gratitude to VLSI System Design for starting this amazing research internship.*  
+**I want to thank Kunal Ghosh Sir for giving me this amazing internship opportunity in RISC-V Architecture with the VSDSquadron Mini. This chance offered me the ideal kickoff and stoked my desire to learn more about the RISC-V world. This internship program was a very inspiring and fulfilling experience. I want to express my gratitude to VLSI System Design for starting this amazing research internship.**  
 
 </details>
 
