@@ -999,7 +999,7 @@ The Shipment Tracking System integrates an MPU6050 accelerometer sensor with the
 ## Interface_for_serial_monitor
 
 <p align="center">
-  <img width="500" src="/Task 6/for_serial_monitor.jpg">
+  <img width="500" src="/Task 6/for_serial_monitoring.jpg">
 </p>
 
 ## How to Program
@@ -1250,10 +1250,25 @@ void HardFault_Handler(void) {
 ## Serial_monitor_output
 
 <p align="center">
-  <img width="500" src="/Task 6/for_serial_monitor.jpg">
+  <img width="500" src="/Task 6/serial_monitor_output.jpg">
 </p>
 
-
-![Watch the Application Video](https://drive.google.com/file/d/14cL-jTExLPgm1A3JFJyBjZHvAqvOKz-P/view?usp=sharing)
+## Application Video
+[Watch the Application Video](https://drive.google.com/file/d/14cL-jTExLPgm1A3JFJyBjZHvAqvOKz-P/view?usp=sharing)
 
 </details>
+
+----------------------------------
+
+<details>  
+<summary>Acknowledgement</summary>  
+<br>  
+
+**I want to thank Kunal Ghosh Sir for giving me this amazing internship opportunity in RISC-V Architecture with the VSDSquadron Mini. This chance offered me the ideal kickoff and stoked my desire to learn more about the RISC-V world. This internship program was a very inspiring and fulfilling experience. I want to express my gratitude to VLSI System Design for starting this amazing research internship.*  
+
+</details>
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
